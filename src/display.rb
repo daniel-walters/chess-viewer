@@ -1,6 +1,7 @@
 require "colorize"
 
-def draw_board(board)
+def draw_board(board_obj)
+    board = board_obj.board
     system "clear"
     board.each_with_index do |row, row_i|
         row.each_with_index do |square, square_i|
