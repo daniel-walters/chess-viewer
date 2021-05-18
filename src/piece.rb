@@ -2,12 +2,12 @@ class Piece
 
     attr_reader :type, :color
 
-    @@unicodes = {  :Pawn => "\u2659", 
-                    :Knight => "\u2658", 
-                    :Bishop => "\u2657", 
-                    :Rook => "\u2656", 
-                    :Queen => "\u2655", 
-                    :King => "\u2654"}
+    @@unicodes = {  :Pawn => "\u265F", 
+                    :Knight => "\u265E", 
+                    :Bishop => "\u265D", 
+                    :Rook => "\u265C", 
+                    :Queen => "\u265B", 
+                    :King => "\u265A"}
 
     def initialize(type, color)
         @type  = type
@@ -15,6 +15,6 @@ class Piece
     end
 
     def to_s
-        @@unicodes[type]
+        @@unicodes[type].colorize(color)
     end
 end

@@ -9,6 +9,7 @@ require "json"
 cur_board = Board.new
 
 puts cur_board.board[0][0].to_s
+puts cur_board.board[7][0].to_s
 
 reader = FileReader.new("bobby.pgn")
 

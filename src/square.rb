@@ -1,3 +1,4 @@
+require "colorize"
 class Square
     attr_accessor :piece
 
