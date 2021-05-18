@@ -38,4 +38,23 @@ class Board
         end
     end
 
+    def convert_coord_to_index(coord)
+        col = ((coord[0].ord - 49).chr).to_i
+        row = 7 - (coord[1].to_i - 1)
+
+        {:row => row, :col => col}
+    end
+
+    def move_piece(move_info)
+        from_ind = convert_coord_to_index(move_info[:from])
+        to_ind = convert_coord_to_index(move_info[:to])
+    
+        #grab piece to be moved
+        piece_to_be_moved = @board[from_ind[:row]][from_ind[:col]].piece
+        #place it where it is moving to
+        @board[to_ind[:row]][to_ind[:col]].piece = piece_to_be_moved
+        #empty the original square
+        @board[from_ind[:row]][from_ind[:col]].piece = nil
+    end
+
 end
