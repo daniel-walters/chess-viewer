@@ -48,13 +48,48 @@ class Board
     def move_piece(move_info)
         from_ind = convert_coord_to_index(move_info[:from])
         to_ind = convert_coord_to_index(move_info[:to])
-    
-        #grab piece to be moved
-        piece_to_be_moved = @board[from_ind[:row]][from_ind[:col]].piece
-        #place it where it is moving to
-        @board[to_ind[:row]][to_ind[:col]].piece = piece_to_be_moved
-        #empty the original square
-        @board[from_ind[:row]][from_ind[:col]].piece = nil
+        type = move_info[:type]
+
+        case type
+        when "short_castle"
+            short_castle(from_ind[:row])
+        when "long_castle"
+            long_castle(from_ind[:row])
+        else
+            #grab piece to be moved
+            piece_to_be_moved = @board[from_ind[:row]][from_ind[:col]].piece
+            #place it where it is moving to
+            @board[to_ind[:row]][to_ind[:col]].piece = piece_to_be_moved
+            #empty the original square
+            @board[from_ind[:row]][from_ind[:col]].piece = nil
+        end 
     end
 
+    def short_castle(row)
+        #get king
+        piece_to_be_moved = @board[row][4].piece
+        #move king to specific square
+        @board[row][6].piece = piece_to_be_moved
+        #get rook
+        piece_to_be_moved = @board[row][7].piece
+        #move rook to specific square
+        @board[row][5].piece = piece_to_be_moved
+        #clear original squares       
+        @board[row][4].piece = nil
+        @board[row][7].piece = nil
+    end
+
+    def long_castle(row)
+        #get king
+        piece_to_be_moved = @board[row][4].piece
+        #move king to specific square   
+        @board[row][2].piece = piece_to_be_moved
+        #get rook
+        piece_to_be_moved = @board[row][0].piece
+        #move rook to specific square
+        @board[row][3].piece = piece_to_be_moved
+        #clear original squares       
+        @board[row][4].piece = nil
+        @board[row][0].piece = nil
+    end
 end

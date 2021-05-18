@@ -10,11 +10,14 @@ class FileReader
     end
 
     def self.get_move(move, data)
-        piece_moved = data["moves"][move]["move"]["piece"]
+        begin
         from = data["moves"][move]["move"]["from_square"]
         to = data["moves"][move]["move"]["to_square"]
-
-        {:piece_moved => piece_moved, :from => from, :to => to}
+        type = data["moves"][move]["move"]["move_type"]
+        rescue
+            return nil
+        end
+        {:type => type, :from => from, :to => to}
     end
         
 

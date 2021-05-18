@@ -6,7 +6,6 @@ reader = FileReader.new("bobby.pgn")
 data = reader.data
 game = Game.new(data)
 draw_board(game.cur_board)
-game.play_turn
 sleep(1)
-draw_board(game.cur_board)
+game.play_full_game
 puts "#{game.player_white} vs. #{game.player_black}"
