@@ -2,17 +2,15 @@ require_relative "board"
 require_relative "piece"
 require_relative "square"
 require_relative "file_reader"
+require_relative "display"
 
 require "egd"
 require "json"
 
 cur_board = Board.new
 
-puts cur_board.board[0][0].to_s
-puts cur_board.board[7][0].to_s
-
 reader = FileReader.new("bobby.pgn")
 
 data = reader.data
 
-pp reader.get_board_array(reader.get_FEN("1w"))
+draw_board(cur_board.board)

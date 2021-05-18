@@ -32,7 +32,7 @@ class Board
         @board[7][6].piece = Piece.new(:Knight, :white)
         @board[7][7].piece = Piece.new(:Rook, :white)
 
-        for i in 0...7 do
+        for i in 0..7 do
             @board[1][i].piece = Piece.new(:Pawn, :black)
             @board[6][i].piece = Piece.new(:Pawn, :white)
         end
