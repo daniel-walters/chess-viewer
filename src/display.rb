@@ -1,7 +1,7 @@
 require "colorize"
 
-
 def draw_board(board)
+    system "clear"
     board.each_with_index do |row, row_i|
         row.each_with_index do |square, square_i|
             if (row_i + square_i).odd?

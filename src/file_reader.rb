@@ -17,6 +17,14 @@ class FileReader
     def get_board_array(fen)
         fen.split("/")
     end
+
+    def get_move(move)
+        piece_moved = @data["moves"][move]["move"]["piece"]
+        from = @data["moves"][move]["move"]["from_square"]
+        to = @data["moves"][move]["move"]["to_square"]
+
+        {:piece_moved => piece_moved, :from => from, :to => to}
+    end
         
 
     private
