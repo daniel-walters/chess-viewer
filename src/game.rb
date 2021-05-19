@@ -42,7 +42,6 @@ class Game
 
     def determine_winner
         result = @data["game_tags"]["Result"]
-        pp result
         whites_result = result.split("-")
         if whites_result == "1"
             "White Wins!"

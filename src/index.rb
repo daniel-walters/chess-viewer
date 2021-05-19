@@ -23,6 +23,7 @@ if ARGV.length > 0
         end
     end
 end
+ARGV.clear
 
 reader = FileReader.new(path)
 data = reader.data
@@ -30,6 +31,13 @@ args_to_pass.unshift(data)
 
 game = Game.new(*args_to_pass)
 
-Display.draw_board(game.cur_board)
-sleep(1)
-game.play_full_game
+case Display.menu
+when 1
+    game.play_full_game
+when 2
+    puts "2"
+when 3
+    exit
+else
+    "oops"
+end
