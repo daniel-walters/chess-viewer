@@ -10,7 +10,7 @@ require "json"
 class Game
     attr_reader :player_white, :player_black, :data
     attr_accessor :cur_board, :turn, :player_to_move, :game_over
-    def initialize(data)
+    def initialize(data, time = 3)
         @data = data
         @cur_board = Board.new
         @turn = 1
@@ -18,6 +18,7 @@ class Game
         @player_white = data["game_tags"]["White"]
         @player_black = data["game_tags"]["Black"]    
         @game_over = false
+        @time_between_turn = time
     end
 
     def change_turn
@@ -46,7 +47,7 @@ class Game
         draw_board(@cur_board)
         while !@game_over do
             play_turn
-            sleep(1)
+            sleep(@time_between_turn)
             system "clear"
             draw_board(@cur_board)
         end
