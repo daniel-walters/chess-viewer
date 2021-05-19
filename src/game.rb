@@ -40,18 +40,37 @@ class Game
         end
     end
 
+    def determine_winner
+        result = @data["game_tags"]["Result"]
+        pp result
+        whites_result = result.split("-")
+        if whites_result == "1"
+            "White Wins!"
+        elsif whites_result == "1/2"
+            "It's a draw!"
+        else
+            "Black Wins!"
+        end
+    end
+
     def play_full_game
         puts "Game Starting!"
         sleep(1)
         system "clear"
-        draw_board(@cur_board)
+        Display.draw_board(@cur_board)
+        puts "Starting Position"
         while !@game_over do
+            cur_turn = @turn
+            cur_to_move = @player_to_move
             play_turn
             sleep(@time_between_turn)
             system "clear"
-            draw_board(@cur_board)
+            puts "#{player_white} (White) Vs. #{player_black} (Black)"
+            Display.draw_board(@cur_board)
+            Display.move_info(cur_turn, cur_to_move, @data)
         end
         puts "Game Over!"
+        puts determine_winner
     end
 end
 

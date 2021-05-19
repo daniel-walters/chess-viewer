@@ -21,7 +21,6 @@ if ARGV.length > 0
         if arg == "-p" || arg == "--path"
             path = ARGV[i+1]
         end
-        
     end
 end
 
@@ -31,7 +30,6 @@ args_to_pass.unshift(data)
 
 game = Game.new(*args_to_pass)
 
-draw_board(game.cur_board)
+Display.draw_board(game.cur_board)
 sleep(1)
 game.play_full_game
-puts "#{game.player_white} vs. #{game.player_black}"
