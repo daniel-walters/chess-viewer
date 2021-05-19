@@ -14,13 +14,13 @@ class FileReader
         from = data["moves"][move]["move"]["from_square"]
         to = data["moves"][move]["move"]["to_square"]
         type = data["moves"][move]["move"]["move_type"]
+        data["moves"][move]["move"]["promotion"] ? promote_to = data["moves"][move]["move"]["promotion"] : promote_to = nil
         rescue
             return nil
         end
-        {:type => type, :from => from, :to => to}
+        {:type => type, :from => from, :to => to, :promote_to => promote_to}
     end
         
-
     private
 
     def get_data

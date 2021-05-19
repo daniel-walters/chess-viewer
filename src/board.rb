@@ -55,14 +55,20 @@ class Board
             short_castle(from_ind[:row])
         when "long_castle"
             long_castle(from_ind[:row])
+        when "promotion_capture", "promotion"
+            promote(from_ind, to_ind, move_info[:promote_to])
         else
-            #grab piece to be moved
-            piece_to_be_moved = @board[from_ind[:row]][from_ind[:col]].piece
-            #place it where it is moving to
-            @board[to_ind[:row]][to_ind[:col]].piece = piece_to_be_moved
-            #empty the original square
-            @board[from_ind[:row]][from_ind[:col]].piece = nil
+           move_or_capture(from_ind, to_ind) 
         end 
+    end
+
+    def move_or_capture(from_ind, to_ind)
+        #grab piece to be moved
+        piece_to_be_moved = @board[from_ind[:row]][from_ind[:col]].piece
+        #place it where it is moving to
+        @board[to_ind[:row]][to_ind[:col]].piece = piece_to_be_moved
+        #empty the original square
+        @board[from_ind[:row]][from_ind[:col]].piece = nil
     end
 
     def short_castle(row)
@@ -91,5 +97,22 @@ class Board
         #clear original squares       
         @board[row][4].piece = nil
         @board[row][0].piece = nil
+    end
+
+    def promote(from_ind, to_ind, promote_to)
+        move_or_capture(from_ind, to_ind)
+        target_square = @board[to_ind[:row]][to_ind[:col]]
+        piece_color = target_square.piece.color
+
+        case promote_to
+        when "N"
+            target_square.piece = Piece.new(:Knight, piece_color)
+        when "B"
+            target_square.piece = Piece.new(:Bishop, piece_color)
+        when "R"
+            target_square.piece = Piece.new(:Rook, piece_color)
+        when "Q"
+            target_square.piece = Piece.new(:Queen, piece_color)
+        end
     end
 end
