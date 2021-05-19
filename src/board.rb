@@ -57,6 +57,8 @@ class Board
             long_castle(from_ind[:row])
         when "promotion_capture", "promotion"
             promote(from_ind, to_ind, move_info[:promote_to])
+        when "ep_capture"
+            en_passant(from_ind, to_ind)
         else
            move_or_capture(from_ind, to_ind) 
         end 
@@ -69,6 +71,16 @@ class Board
         @board[to_ind[:row]][to_ind[:col]].piece = piece_to_be_moved
         #empty the original square
         @board[from_ind[:row]][from_ind[:col]].piece = nil
+    end
+
+    def en_passant(from_ind, to_ind)
+        move_or_capture(from_ind, to_ind)
+        #remove captured piece
+        if from_ind[:row] > to_ind[:row]
+            @board[to_ind[:row] + 1][to_ind[:col]].piece = nil
+        else
+            @board[to_ind[:row] - 1][to_ind[:col]].piece = nil
+        end
     end
 
     def short_castle(row)
