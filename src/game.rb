@@ -9,7 +9,7 @@ require "json"
 
 class Game
     attr_reader :player_white, :player_black, :data
-    attr_accessor :cur_board, :turn, :player_to_move, :game_over
+    attr_accessor :cur_board, :turn, :player_to_move
 
     def initialize(data, time = 3)
         @data = data
@@ -18,7 +18,6 @@ class Game
         @player_to_move = "w"
         @player_white = data["game_tags"]["White"]
         @player_black = data["game_tags"]["Black"]    
-        @game_over = false
         @time_between_turn = time
     end
 
@@ -76,12 +75,8 @@ class Game
     end
 
     def play_turn
-        move_info = FileReader.get_move("#{@turn}#{@player_to_move}", @data)
-        if move_info == nil
-            @game_over = true
-        else
-            @cur_board.move_piece(move_info)
-        end
+        move_info = FileReader.get_move("#{@turn}#{@player_to_move}", @data)    
+        @cur_board.move_piece(move_info)
     end
 
     def determine_winner
@@ -96,6 +91,7 @@ class Game
         end
     end
 
+    ####ADD IN GOTO #####
     def play_manual
         first_move = true
         system "clear"
@@ -126,6 +122,16 @@ class Game
                     @turn -=1 if player_to_move == "b"
                     fast_forward("#{@turn}#{@player_to_move}")
                 end
+            when "goto"
+                move = Display.get_move
+                valid  = validate_move(move)
+                if valid
+                    first_move = false
+                    fast_forward(move)
+                else
+                    puts "Error not a valid move"
+                    sleep(1)
+                end
             when "exit"
                 exit
             end
@@ -141,46 +147,11 @@ class Game
         end
     end
 
-    #def play_manual
-    #    puts "#{player_white} (White) Vs. #{player_black} (Black)"
-    #    Display.draw_board(@cur_board)
-    #    puts "Starting Position"
-    #    while (true)
-    #        prompt = "Type 'n' to go next and 'p' to go previous. 'end' to exit"
-    #        print prompt
-    #        input = gets.chomp.downcase
-    #        while input != "n" && input != "p" && input != "end" do
-    #            puts "error"
-    #            print prompt
-    #            input = gets.chomp.downcase
-    #        end
-        
-    #        if input == "n"
-    #            cur_turn = @turn
-    #            cur_to_move = @player_to_move
-    #            play_turn
-    #            system "clear"
-    #            puts "#{player_white} (White) Vs. #{player_black} (Black)"
-    #            Display.draw_board(@cur_board)
-    #            Display.move_info(cur_turn, cur_to_move, @data)
-    #            increment_game
-    #        elsif input == "p"
-    #            @turn -= 1
-    #            turn_to = @turn
-    #            player_to = @player_to_move
-    #            fast_forward("#{turn_to}#{player_to}")
-    #            system "clear"
-    #            puts "#{player_white} (White) Vs. #{player_black} (Black)"
-    #            Display.draw_board(@cur_board)
-    #            Display.move_info(cur_turn, cur_to_move, @data)
-    #        else
-    #            exit
-    #        end
-    #    end
-    #end
+    private
 
-    
-
-    
+    def validate_move(move)       
+            move_from_file = @data["moves"][move]
+            move_from_file ? valid = true : valid = false
+    end
 end
 

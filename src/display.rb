@@ -63,7 +63,7 @@ class Display
     end
 
     def self.man_menu
-        valid_inputs = ["n", "b", "exit"]
+        valid_inputs = ["n", "b", "exit", "goto"]
         prompt = "Type 'n' to go next, 'b' to go back, or 'exit' to exit\n"
         print prompt
         input = gets.chomp.downcase
@@ -75,6 +75,11 @@ class Display
         end
 
         return input
+    end
+
+    def self.get_move
+        puts "Enter a move to go to"
+        input = gets.chomp.downcase
     end
 end
 
