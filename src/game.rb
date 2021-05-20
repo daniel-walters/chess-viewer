@@ -43,7 +43,7 @@ class Game
 
     def view_turn
         Display.draw_board(@cur_board, @player_white, @player_black)
-        Display.move_info(@turn, @player_to_move, @data)
+        Display.move_info(@turn, @player_to_move, FileReader.get_move("#{@turn}#{@player_to_move}", @data))
     end
 
     def play_full_game

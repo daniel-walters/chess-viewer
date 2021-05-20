@@ -19,6 +19,7 @@ class Display
 
     def self.move_info(cur_turn, cur_to_move, data)
         puts "Turn #{cur_turn}, #{cur_to_move == "w" ? "Whites" : "Blacks"} move"
+        puts get_commentary(data, cur_to_move)
     end
 
     def self.game_start_ui
@@ -80,6 +81,36 @@ class Display
     def self.get_move
         puts "Enter a move to go to"
         input = gets.chomp.downcase
+    end
+
+    def self.get_commentary(move_info, player)
+        com = ""
+        player == "w" ? com += "White plays " : com += "Black plays "
+        com += "#{piece_short_to_long(move_info[:piece])} from "
+        com += "#{move_info[:to]} to #{move_info[:from]}."
+        if move_info[:captured_piece] then com += " Capturing a #{piece_short_to_long(move_info[:captured_piece])}." end
+        if move_info[:promote_to] then com += " Promoting to a #{piece_short_to_long(move_info[:promote_to])}." end
+        if move_info[:check] then com += " Check!" end
+        if move_info[:checkmate] then com += " Checkmate!" end
+
+        return com
+    end
+
+    def self.piece_short_to_long(piece)
+        case piece.downcase 
+        when "p"
+            "Pawn"
+        when "n"
+            "Knight"
+        when "bd", "bl"
+            "Bishop"
+        when "r"
+            "Rook"
+        when "q"
+            "Queen"
+        when "k"
+            "King"
+        end
     end
 end
 
