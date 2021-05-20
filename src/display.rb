@@ -1,8 +1,10 @@
 require "colorize"
 class Display
 
-    def self.draw_board(board_obj)
+    def self.draw_board(board_obj, white, black)
         board = board_obj.board
+
+        puts "#{white} (Black) Vs. #{black} (Black)"
         board.each_with_index do |row, row_i|
             row.each_with_index do |square, square_i|
                 if (row_i + square_i).odd?
@@ -18,6 +20,24 @@ class Display
     def self.move_info(cur_turn, cur_to_move, data)
         puts "Turn #{cur_turn}, #{cur_to_move == "w" ? "Whites" : "Blacks"} move"
     end
+
+    def self.game_start_ui
+        puts "Starting Position"
+        puts "Game Starting!"
+        sleep(1)
+        puts "3..."
+        sleep(1)
+        puts "2..."
+        sleep(1)
+        puts "1..."
+        sleep(1)
+        system "clear"
+    end
+
+    def self.game_end_ui(winner)
+        puts "Final Position"
+        puts "#{winner}"
+    end
     
     def self.menu
         system "clear"
@@ -32,14 +52,29 @@ class Display
         end
         case input
         when 1
-            1
+            return 1
         when 2
-            2
+            return 2
         when 3
-            3
+            return 3
         else
-            3
+            return 3
         end
+    end
+
+    def self.man_menu
+        valid_inputs = ["n", "b", "exit"]
+        prompt = "Type 'n' to go next, 'b' to go back, or 'exit' to exit\n"
+        print prompt
+        input = gets.chomp.downcase
+
+        while !valid_inputs.include?(input)
+            puts "error"
+            print prompt
+            input = gets.chomp.downcase
+        end
+
+        return input
     end
 end
 

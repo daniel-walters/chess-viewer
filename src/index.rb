@@ -35,7 +35,7 @@ case Display.menu
 when 1
     game.play_full_game
 when 2
-    puts "2"
+    game.play_manual
 when 3
     exit
 else
