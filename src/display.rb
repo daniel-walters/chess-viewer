@@ -6,6 +6,7 @@ class Display
 
         puts "#{white} (Black) Vs. #{black} (Black)"
         board.each_with_index do |row, row_i|
+            print "#{8-row_i}"
             row.each_with_index do |square, square_i|
                 if (row_i + square_i).odd?
                     print square.to_s.colorize(:background => :blue)
@@ -15,6 +16,7 @@ class Display
             end
             print "\n"
         end
+        puts "  a  b  c  d  e  f  g  h "
     end
 
     def self.move_info(cur_turn, cur_to_move, data)
@@ -65,7 +67,7 @@ class Display
 
     def self.man_menu
         valid_inputs = ["n", "b", "exit", "goto"]
-        prompt = "Type 'n' to go next, 'b' to go back, or 'exit' to exit\n"
+        prompt = "Type 'n' to go next, 'b' to go back, 'goto' to choose a move, or 'exit' to exit\n"
         print prompt
         input = gets.chomp.downcase
 
@@ -87,7 +89,7 @@ class Display
         com = ""
         player == "w" ? com += "White plays " : com += "Black plays "
         com += "#{piece_short_to_long(move_info[:piece])} from "
-        com += "#{move_info[:to]} to #{move_info[:from]}."
+        com += "#{move_info[:from]} to #{move_info[:to]}."
         if move_info[:captured_piece] then com += " Capturing a #{piece_short_to_long(move_info[:captured_piece])}." end
         if move_info[:promote_to] then com += " Promoting to a #{piece_short_to_long(move_info[:promote_to])}." end
         if move_info[:check] then com += " Check!" end
