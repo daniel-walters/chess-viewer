@@ -1,4 +1,5 @@
 require "colorize"
+require_relative "input_error.rb"
 class Display
 
     def self.draw_board(board_obj, white, black)
@@ -46,35 +47,31 @@ class Display
         system "clear"
         prompt = "Choose an option\n1) Automatic\n2) Manual\n3) Exit\n"
         print prompt
-        input = gets.chomp.to_i
-        while input > 3 || input < 1 do
-            system "clear"
-            puts "Invalid input"
-            print prompt
+        
+        begin
             input = gets.chomp.to_i
+            raise InputError if input > 3 || input < 1
+        rescue InputError => e
+            system "clear"
+            print prompt
+            puts e.message
+            retry
         end
-        case input
-        when 1
-            return 1
-        when 2
-            return 2
-        when 3
-            return 3
-        else
-            return 3
-        end
+
+        return input
     end
 
     def self.man_menu
         valid_inputs = ["n", "b", "exit", "goto"]
         prompt = "Type 'n' to go next, 'b' to go back, 'goto' to choose a move, or 'exit' to exit\n"
         print prompt
-        input = gets.chomp.downcase
-
-        while !valid_inputs.include?(input)
-            puts "error"
-            print prompt
+        
+        begin
             input = gets.chomp.downcase
+            raise InputError if !valid_inputs.include?(input)
+        rescue InputError => e
+            puts e.message
+            retry
         end
 
         return input

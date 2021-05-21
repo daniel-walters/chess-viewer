@@ -91,7 +91,6 @@ class Game
         end
     end
 
-    ####ADD IN GOTO #####
     def play_manual
         first_move = true
         system "clear"
