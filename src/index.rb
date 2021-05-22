@@ -28,7 +28,14 @@ if ARGV.length > 0
             end      
         end
         if arg == "-p" || arg == "--path"
-            path = ARGV[i+1]
+            begin
+                if (!ARGV[i+1]) then raise ArgumentError.new("No Path detected, loading default") end
+                path = ARGV[i+1]
+            rescue ArgumentError => e
+                puts e.message
+                sleep(2)
+                path = "pgn/FischerVsThomason.pgn"
+            end
         end
     end
 
