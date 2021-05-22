@@ -9,9 +9,11 @@ if ARGV.length > 0
     
     case
     when ARGV.include?("-h") || ARGV.include?("--help")
-        puts "help"
+        Display.help_message
+        exit
     when ARGV.include?("-i") || ARGV.include?("--info")
-        puts "info"
+        Display.info_message
+        exit
     end
 
     ARGV.each_with_index do |arg, i|
@@ -27,8 +29,9 @@ ARGV.clear
 
 reader = FileReader.new(path)
 data = reader.data
-args_to_pass.unshift(data)
 
+
+args_to_pass.unshift(data)
 game = Game.new(*args_to_pass)
 
 case Display.menu
@@ -37,7 +40,6 @@ when 1
 when 2
     game.play_manual
 when 3
-    exit
-else
-    "oops"
+        exit
 end
+

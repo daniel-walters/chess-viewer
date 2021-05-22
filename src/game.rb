@@ -124,11 +124,13 @@ class Game
             when "goto"
                 move = Display.get_move
                 valid  = validate_move(move)
-                if valid
-                    first_move = false
-                    fast_forward(move)
-                else
-                    puts "Error not a valid move"
+                begin
+                    if valid
+                        first_move = false
+                        fast_forward(move)
+                    else raise InputError end
+                rescue InputError => e
+                    puts e.message
                     sleep(1)
                 end
             when "exit"

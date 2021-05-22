@@ -111,5 +111,23 @@ class Display
             "King"
         end
     end
+
+    def self.help_message
+        puts "Chess Viewer - Help"
+        puts "Main Flags/Arguments:"
+        puts "  -t <time in seconds> OR --time <time in seconds> -- Set time in seconds between each move (3s by default)"
+        puts "  -p <filepath> OR --path <filepath> -- Set the path to the PGN file"
+        puts "Informative Flags/Arguments:"
+        puts "  -h OR --help -- Display this message"
+        puts "  -i OR --info -- Display Information on the Program"
+        puts "For more info please refer to the README.md"
+    end
+
+    def self.info_message
+        puts "Program: Chess Viewer"
+        puts "by Daniel Walters"
+        puts "\nDownload any PGN file from the internet and Chess Viewer will play the game in the terminal for you watch"
+        puts "There is an option to have the whole game play automatically, or to manually step through each move"
+    end
 end
 
