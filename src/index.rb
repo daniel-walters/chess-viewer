@@ -18,7 +18,14 @@ if ARGV.length > 0
 
     ARGV.each_with_index do |arg, i|
         if arg == "-t" || arg == "--time"
-            args_to_pass.push(ARGV[i+1].to_i)
+            begin
+                if (ARGV[i+1]).to_i <= 0 then raise ArgumentError.new("Time must be greater than 0, using default(3)") end
+                args_to_pass.push(ARGV[i+1].to_i)   
+            rescue ArgumentError => e
+                puts e.message
+                sleep(2)
+                args_to_pass.push(3)
+            end      
         end
         if arg == "-p" || arg == "--path"
             path = ARGV[i+1]
