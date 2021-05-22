@@ -24,22 +24,29 @@ if ARGV.length > 0
             path = ARGV[i+1]
         end
     end
+
+    if !ARGV.include?("-p") && !ARGV.include?("--path") then path = "pgn/FischerVsThomason.pgn" end
+else
+    path = "pgn/FischerVsThomason.pgn"
 end
+
 ARGV.clear
 
+#Load File and get JSON
 reader = FileReader.new(path)
 data = reader.data
 
-
+#Create Game with arguments
 args_to_pass.unshift(data)
 game = Game.new(*args_to_pass)
 
+#Main menu selection
 case Display.menu
 when 1
     game.play_full_game
 when 2
     game.play_manual
 when 3
-        exit
+    exit
 end
 

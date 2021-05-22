@@ -11,3 +11,5 @@ gem "colorize", "~> 0.8.1"
 gem "egd", "~> 1.0"
 
 gem "json", "~> 2.5"
+
+gem "artii", "~> 2.1"

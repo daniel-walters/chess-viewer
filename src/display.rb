@@ -1,4 +1,5 @@
 require "colorize"
+require "artii"
 require_relative "input_error.rb"
 class Display
 
@@ -44,8 +45,11 @@ class Display
     end
     
     def self.menu
+        a = Artii::Base.new
         system "clear"
-        prompt = "Choose an option\n1) Automatic\n2) Manual\n3) Exit\n"
+        puts a.asciify("Chess Viewer")
+        puts "-----------------------------------------------------------------"
+        prompt = "\nChoose an option\n1) Automatic\n2) Manual\n3) Exit\n"
         print prompt
         
         begin

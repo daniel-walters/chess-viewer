@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    artii (2.1.2)
     colorize (0.8.1)
     egd (1.0.2)
       pgn (~> 0.2.0)
@@ -13,6 +14,7 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
+  artii (~> 2.1)
   colorize (~> 0.8.1)
   egd (~> 1.0)
   json (~> 2.5)
