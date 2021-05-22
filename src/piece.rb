@@ -1,3 +1,4 @@
+require "os"
 class Piece
 
     attr_reader :type, :color
@@ -9,12 +10,20 @@ class Piece
                     :Queen => "\u265B", 
                     :King => "\u265A"}
 
+    @@windows_pieces = {:Pawn => "P",
+                        :Knight => "N",
+                        :Bishop => "B",
+                        :Rook => "R",
+                        :Queen => "Q",
+                        :King => "K"}
+
     def initialize(type, color)
         @type  = type
         @color = color
     end
 
     def to_s
-        @@unicodes[type].colorize(color)
+        if OS.windows? then @@windows_pieces[type].colorize(color)
+        else @@unicodes[type].colorize(color) end
     end
 end
