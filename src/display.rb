@@ -9,6 +9,7 @@ class Display
         board = board_obj.board
 
         puts "#{white} (Black) Vs. #{black} (Black)"
+        print "\n"
         board.each_with_index do |row, row_i|
             print "#{8-row_i}"
             row.each_with_index do |square, square_i|
@@ -21,6 +22,7 @@ class Display
             print "\n"
         end
         puts "  a  b  c  d  e  f  g  h "
+        print "\n"
     end
 
     def self.move_info(cur_turn, cur_to_move, data)
