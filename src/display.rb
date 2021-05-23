@@ -8,7 +8,7 @@ class Display
     def self.draw_board(board_obj, white, black)
         board = board_obj.board
 
-        puts "#{white} (Black) Vs. #{black} (Black)"
+        puts "#{white} (White) Vs. #{black} (Black)"
         print "\n"
         board.each_with_index do |row, row_i|
             print "#{8-row_i}"
