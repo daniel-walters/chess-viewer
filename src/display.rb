@@ -13,9 +13,9 @@ class Display
             print "#{8-row_i}"
             row.each_with_index do |square, square_i|
                 if (row_i + square_i).odd?
-                    print square.to_s.colorize(:background => :blue)
+                    print square.to_s.colorize(:background => :green)
                 else
-                    print square.to_s.colorize(:background => :yellow)
+                    print square.to_s.colorize(:background => :light_black)
                 end
             end
             print "\n"

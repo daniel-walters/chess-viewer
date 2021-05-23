@@ -9,7 +9,7 @@ require "json"
 
 class Game
     attr_reader :player_white, :player_black, :data
-    attr_accessor :cur_board, :turn, :player_to_move
+    attr_accessor :cur_board, :turn, :player_to_move, :time_between_turn
 
     def initialize(data, time = 3)
         @data = data
