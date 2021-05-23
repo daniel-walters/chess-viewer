@@ -1,6 +1,8 @@
 require "colorize"
 require "artii"
+require "os"
 require_relative "input_error.rb"
+
 class Display
 
     def self.draw_board(board_obj, white, black)
@@ -36,7 +38,7 @@ class Display
         sleep(1)
         puts "1..."
         sleep(1)
-        system "clear"
+        clear_screen
     end
 
     def self.game_end_ui(winner)
@@ -46,7 +48,7 @@ class Display
     
     def self.menu
         a = Artii::Base.new
-        system "clear"
+        clear_screen
         puts a.asciify("Chess Viewer")
         puts "-----------------------------------------------------------------"
         prompt = "\nChoose an option\n1) Automatic\n2) Manual\n3) Exit\n"
@@ -56,7 +58,7 @@ class Display
             input = gets.chomp.to_i
             raise InputError if input > 3 || input < 1
         rescue InputError => e
-            system "clear"
+            clear_screen
             print prompt
             puts e.message
             retry
@@ -132,6 +134,10 @@ class Display
         puts "by Daniel Walters"
         puts "\nDownload any PGN file from the internet and Chess Viewer will play the game in the terminal for you watch"
         puts "There is an option to have the whole game play automatically, or to manually step through each move"
+    end
+
+    def self.clear_screen
+        OS.windows? ? system("cls") : system("clear")
     end
 end
 

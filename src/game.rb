@@ -47,7 +47,7 @@ class Game
     end
 
     def play_full_game
-        system "clear"
+        Display.clear_screen
         Display.draw_board(@cur_board, @player_white, @player_black)
         Display.game_start_ui
         fast_forward(@data["moves"].keys[-1], true)
@@ -68,7 +68,7 @@ class Game
                 if display
                     view_turn
                     sleep(@time_between_turn)
-                    system "clear"
+                    Display.clear_screen
                 end
             end
         end
@@ -93,7 +93,7 @@ class Game
 
     def play_manual
         first_move = true
-        system "clear"
+        Display.clear_screen
         Display.draw_board(@cur_board, @player_white, @player_black)
         puts "Starting Position"
 
@@ -136,7 +136,7 @@ class Game
             when "exit"
                 exit
             end
-            system "clear"
+            Display.clear_screen
             if first_move
                 Display.draw_board(@cur_board, @player_white, @player_black)
                 puts "Starting Position"
