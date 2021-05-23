@@ -59,6 +59,8 @@ class Display
             raise InputError if input > 3 || input < 1
         rescue InputError => e
             clear_screen
+            puts a.asciify("Chess Viewer")
+            puts "-----------------------------------------------------------------"
             print prompt
             puts e.message
             retry
@@ -69,7 +71,7 @@ class Display
 
     def self.man_menu
         valid_inputs = ["n", "b", "exit", "goto"]
-        prompt = "Type 'n' to go next, 'b' to go back, 'goto' to choose a move, or 'exit' to exit\n"
+        prompt = "\nType 'n' to go next, 'b' to go back, 'goto' to choose a move, or 'exit' to exit\n"
         print prompt
         
         begin
