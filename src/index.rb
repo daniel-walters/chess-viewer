@@ -47,8 +47,15 @@ end
 ARGV.clear
 
 #Load File and get JSON
-reader = FileReader.new(path)
-data = reader.data
+begin
+    reader = FileReader.new(path)
+    data = reader.data
+rescue
+    puts "File not found or invalid format. Loading default game"
+    path = "pgn/FischerVsThomason.pgn"
+    sleep(2)
+    retry
+end
 
 #Create Game with arguments
 args_to_pass.unshift(data)
