@@ -1,13 +1,47 @@
 #!/bin/bash
 
-echo "Welcome to Chess Viewer"
-echo "Would you like to load your own PGN file? (y/n)"
-read CHOICE
+get_y_or_n () {
+    read CHOICE
 
-if ($CHOICE == "y")
+    until [ $CHOICE = "y" ] || [ $CHOICE = "n" ]; do
+    echo "Incorrect Input. Please type 'y' for yes or 'n' for no"
+    read CHOICE
+    done
+
+    if [ $CHOICE = "y" ]
+    then 
+        RET=1
+    else
+        RET=0
+    fi
+
+    echo $RET
+}
+
+echo "Welcome to Chess Viewer"
+echo "Is this your first time using the application? (y/n)"
+
+CHOICE=$(get_y_or_n)
+
+if [ $CHOICE -eq 1 ]
 then
-    echo "Enter the file path your .pgn file: "
+    bundle install
+fi
+
+echo "Would you like to load your own PGN file? (y/n)"
+
+CHOICE=$(get_y_or_n)
+
+if [ $CHOICE -eq 1 ]
+then
+    echo "Enter the file path to your .pgn file: "
     read PGN
+    if [[ -f $PGN ]]; then
+        echo "File Found."
+    else
+        echo "File not Found. Loading Default instead."
+        PGN="pgn/FischerVsThomason.pgn"
+    fi
 else
     echo "Program will use default file"
     PGN="pgn/FischerVsThomason.pgn"
