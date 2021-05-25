@@ -89,6 +89,7 @@ class Display
 
     def self.get_move
         puts "Enter a move to go to"
+        puts "Move must be in the format <turn><player_color>. I.e. '5w' for turn 5, whites move"
         input = gets.chomp.downcase
     end
 

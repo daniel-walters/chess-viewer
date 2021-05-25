@@ -22,7 +22,8 @@ class FileReader
         rescue
             return nil
         end
-        {:type => type, :from => from, :to => to, :piece => piece, :promote_to => promote_to, :captured_piece => captured_piece, :check => check, :checkmate => checkmate}
+        {:type => type, :from => from, :to => to, :piece => piece, :promote_to => promote_to,
+         :captured_piece => captured_piece, :check => check, :checkmate => checkmate}
     end
         
     private

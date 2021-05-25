@@ -131,7 +131,7 @@ class Game
                     else raise InputError end
                 rescue InputError => e
                     puts e.message
-                    sleep(1)
+                    sleep(2)
                 end
             when "exit"
                 exit

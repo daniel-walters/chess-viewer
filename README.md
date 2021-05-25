@@ -32,7 +32,8 @@ The program will play through the chess game automatically and exit once finishe
 
 ><ins>Manual Mode</ins>  
 The user will be prompted to type 'n' for next move, 'b' for previous move, 'goto' to specify a move, or 'exit' to exit the program.  
-If 'goto' is chosen, the user will be once more prompted, this time for a move to go to. Once a new move has been selected either with 'n', 'b', or 'goto', the game will show that move and the user will be prompted for their next decision until they type exit.
+If 'goto' is chosen, the user will be once more prompted, this time for a move to go to. Once a new move has been selected either with 'n', 'b', or 'goto', the game will show that move and the user will be prompted for their next decision until they type exit.  
+***NOTE:*** When selecting 'goto', moves must be entered in the format of '[turn][player_to_move]'. I.e. To goto whites move on turn 5, the user must input '5w' when prompted to enter a move.
 
 ### <ins>Control Flow Diagram:</ins>  
 ![Control Flow Diagram](docs/controlflow.png)
@@ -53,9 +54,14 @@ Beginning of Project:
 Mid-way through devlopment:
 ![Trello midway through project](docs/project-mid.png)
 
-Cur Progress as of 23/05/2021:
-![Current Trello Board](docs/project-cur.png)
+Progress as of 23/05/2021:
+![Current Trello Board](docs/project-cur.png)  
+
+First Release with possible future features added (26/05/2021)
+![First Release Trello Board](docs/first_release.png)
 ### <ins>Help Documentation:</ins>  
+NOTE: Please install the ruby gem bundler before using the program:
+> gem install bundler  
 
 NOTE: If not using the bash script described below, please install the relevant gems needed for the application by running:
 > bundle install  
