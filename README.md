@@ -68,7 +68,8 @@ NOTE: If not using the bash script described below, please install the relevant 
 
 The index.rb file can be run with the following commands:  
 - '-p [path_to_pgn]' OR '--path [path_to_pgn]'  
-This will load the given pgn file into the application
+This will load the given pgn file into the application  
+If the pgn file is located in the pgn folder, the format for the path should be: 'pgn/(filename).pgn'  
 - '-t [seconds_between_moves]' OR '--time [seconds_between_moves]'  
 This will set how many seconds the program will wait between moves in automatic mode.
 

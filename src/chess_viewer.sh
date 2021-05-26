@@ -35,15 +35,16 @@ CHOICE=$(get_y_or_n)
 if [ $CHOICE -eq 1 ]
 then
     echo "Enter the file path to your .pgn file: "
+    echo "If located in the pgn folder, type in the format: 'pgn/<filename>.pgn'"
     read PGN
     if [[ -f $PGN ]]; then
         echo "File Found."
     else
-        echo "File not Found. Loading Default instead."
+        echo "File not Found. Loading Default instead (FischerVsThomason)."
         PGN="pgn/FischerVsThomason.pgn"
     fi
 else
-    echo "Program will use default file"
+    echo "Program will use default file (FischerVsThomason)."
     PGN="pgn/FischerVsThomason.pgn"
 fi
 
