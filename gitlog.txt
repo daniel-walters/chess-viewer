@@ -1,0 +1,203 @@
+commit 6db3bdd67d6f31fdd509a10363c522d3b894ff6c
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Wed May 26 07:59:36 2021 +0800
+
+    Updates README, add some UI Changes
+
+commit 49a31bcb119dcbf6d1304d745f6ab025ffd68918
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sun May 23 23:11:40 2021 +0800
+
+    fixed a typo
+
+commit 2aed19f4beb9258ea7f478b1a5a42de03a17dbde
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sun May 23 19:28:18 2021 +0800
+
+    modified readme
+
+commit e214027dd07bae8bc7eeb81d79cb8ad732a18ce8
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sun May 23 19:27:07 2021 +0800
+
+    updated readme
+
+commit 92491ae17de28e96eb13692b0071da09866c14a5
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sun May 23 14:52:44 2021 +0800
+
+    updates bash script to check given file exists
+
+commit b61e52cc1e6568f881ac26ac2f607e1406f46bda
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sun May 23 13:20:46 2021 +0800
+
+    more ui spacing changes
+
+commit 754560b6e9376f88829beb58120600d7c26445e4
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sun May 23 13:12:06 2021 +0800
+
+    changes some ui spacing
+
+commit d792ef3c5e6424fb59960a21398205ba848129db
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sun May 23 13:06:41 2021 +0800
+
+    changes color of squares, adds rspec tests
+
+commit 3025147f00f4be0e035187d7a2d91cec0e0e38b9
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sun May 23 10:49:22 2021 +0800
+
+    screen now clears on windows OS
+
+commit f00044763a39936956d95ba09f01fc1132f622cc
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sat May 22 19:18:59 2021 +0800
+
+    changes pieces from unicode to letters if on windows
+
+commit aa5fd5766766a0e6eae51597a1fca338369439e8
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sat May 22 18:55:51 2021 +0800
+
+    uses default settings if arguments given incorrectly
+
+commit 7172eaad9acd308e036370a7b145f86f3231f93b
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sat May 22 18:48:48 2021 +0800
+
+    adds chess_viewer.sh and makes sure time is greater than 0 when given as argument
+
+commit 73553a5cc374d012db2deeb0cf0c10ba37dab9b3
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sat May 22 17:55:48 2021 +0800
+
+    loads default pgn when no argumnet given and added artii title to main menu
+
+commit ef96372f0976b8d4574a303c6fe02f3cddd9f234
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Sat May 22 17:36:43 2021 +0800
+
+    adds help and info messages
+
+commit 23ae67c82d71edb89ef9bf6e07cba5d1f795031a
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Fri May 21 13:31:01 2021 +0800
+
+    added input_error.rb and exception handling for invalid input in menus
+
+commit 1bb73710a2f5a6660cd1dd90fd8612ec366bbd95
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Thu May 20 16:22:58 2021 +0800
+
+    adds coordinates to board
+
+commit 2375e629cf0279ebac5d3f6a2e07b148cec0a44d
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Thu May 20 16:10:58 2021 +0800
+
+    adds commentary to each move
+
+commit 2160daa53fe380198d4b9feeab00d32bc2259c23
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Thu May 20 14:54:33 2021 +0800
+
+    adds 'goto' move functionality in manual mode
+
+commit 4f3975c133e4188ca90d7dd6d869e9a8edcb522a
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Thu May 20 13:28:29 2021 +0800
+
+    refactors game.rb and display.rb - adds functionality to play 1 move at a time (forward or backward)
+
+commit 0a539b413473a7b29df56960dca77a1fb0999e00
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Wed May 19 13:24:32 2021 +0800
+
+    adds basic main menu
+
+commit afedc1ba854113d635456eda23eef3a5f8b9004d
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Wed May 19 12:44:23 2021 +0800
+
+    shows who won the game
+
+commit 3fe0f1a3e0a88a67aced4e6c9eb046641205fb56
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Wed May 19 12:00:53 2021 +0800
+
+    adds some argument handling
+
+commit d650197b427b3956939ea2c059c614386d129fb7
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Wed May 19 09:25:12 2021 +0800
+
+    adds functionality for en passant
+
+commit de06b43147106c7d249aa107769e5d426e134e25
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Wed May 19 08:48:02 2021 +0800
+
+    adds functionality for pawn promotion
+
+commit 4a60717e9c0a641b24db1e214f56d89fcd0fbac7
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Tue May 18 14:09:32 2021 +0800
+
+    adds support for castling
+
+commit 90147b695ec96db7731d2cd58cc4b2c8b334bb64
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Tue May 18 13:21:06 2021 +0800
+
+    adds play_turn()
+
+commit 04f04f512f9e8c6499a671b6abdcc72006c6f9c9
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Tue May 18 13:04:33 2021 +0800
+
+    reads player names from file
+
+commit 801d568eda2624567e4a6d5c3f10efc2e6965111
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Tue May 18 12:53:09 2021 +0800
+
+    adds current game logic to its own class
+
+commit 17b214212e89760126309d122e0e2079f5151935
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Tue May 18 12:30:50 2021 +0800
+
+    adds ability to convert coordinates to array index and ability to move a piece on the board
+
+commit 149a088a8be0eec61d3e6d2d7a5586508b86e474
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Tue May 18 10:59:25 2021 +0800
+
+    adds ability to read single move from json
+
+commit fc5886d62a848f4b12159e1a8ad53cbf4346f4b5
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Tue May 18 10:33:17 2021 +0800
+
+    adds ability to draw board to terminal
+
+commit b756a02439ef82f064e18bc1e32a1e188ab7326d
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Tue May 18 10:10:16 2021 +0800
+
+    adds method to set up pieces on chess board, colors them accordingly
+
+commit bc165a23319b8cce8b63bca4bdcfcf73bea321aa
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Tue May 18 09:54:25 2021 +0800
+
+    adds file_reader to convert pgn to json and extract fen
+
+commit 1a5bfec3064838423c358cee1f42463a5a9c5b96
+Author: daniel-walters <waltersdaniel96@gmail.com>
+Date:   Mon May 17 22:35:25 2021 +0800
+
+    first commit - creates classes with very basic skeleton structure
