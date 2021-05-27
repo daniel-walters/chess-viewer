@@ -5,6 +5,8 @@ require_relative "display"
 args_to_pass = []
 path = ""
 ####ARGUMENT HANDLING#####
+#lets user type arguments in any order they want in the format:
+#ruby index.rb -t <time> -p <path>
 if ARGV.length > 0
     
     case
@@ -47,6 +49,7 @@ end
 ARGV.clear
 
 #Load File and get JSON
+#if file doesnt exist or not in pgn format then load default file
 begin
     reader = FileReader.new(path)
     data = reader.data

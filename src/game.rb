@@ -21,6 +21,7 @@ class Game
         @time_between_turn = time
     end
 
+    #reset game to initialized state
     def reset_game
         @cur_board.clear_board
         @cur_board.setup_board
@@ -28,6 +29,7 @@ class Game
         @player_to_move = "w"
     end
 
+    #change "w" to "b" and vise versa
     def change_turn
         if @player_to_move == "w"
             @player_to_move = "b"
@@ -36,16 +38,19 @@ class Game
         end
     end
 
+    #increment variables for keeping track of what turn the game is up to
     def increment_game
         change_turn
         @turn += 1 if @player_to_move == "w"
     end
 
+    #call relevant display functions to display the board and move
     def view_turn
         Display.draw_board(@cur_board, @player_white, @player_black)
         Display.move_info(@turn, @player_to_move, FileReader.get_move("#{@turn}#{@player_to_move}", @data))
     end
 
+    #call relevant UI functions and play the game in full
     def play_full_game
         Display.clear_screen
         Display.draw_board(@cur_board, @player_white, @player_black)
@@ -55,6 +60,7 @@ class Game
         Display.game_end_ui(determine_winner)
     end
 
+    #fast forward the game from 1st move to input
     def fast_forward(to, display = false)
         reset_game
         first_move = true
@@ -63,6 +69,8 @@ class Game
             play_turn
         else
             until "#{@turn}#{@player_to_move}" == to do
+                #if first move dont increment the game otherwise will skip the first move
+                #this is because game is initialized at turn '1w' but the move itself has not been played yet
                 !first_move ? increment_game : first_move = false
                 play_turn
                 if display
@@ -74,11 +82,13 @@ class Game
         end
     end
 
+    #get move info and pass to move_piece
     def play_turn
         move_info = FileReader.get_move("#{@turn}#{@player_to_move}", @data)    
         @cur_board.move_piece(move_info)
     end
 
+    #read json result line and determine what colour won
     def determine_winner
         result = @data["game_tags"]["Result"]
         whites_result = result.split("-")
@@ -91,6 +101,9 @@ class Game
         end
     end
 
+    #logic for manual mode
+    #if going next just runs play_turn and increment game to play just 1 turn
+    #if going prev or skipping a move, calls fast_forward to the chosen move or to move-1 if previous
     def play_manual
         first_move = true
         Display.clear_screen
@@ -149,7 +162,7 @@ class Game
     end
 
     private
-
+    #check if a move is actually in the json
     def validate_move(move)       
             move_from_file = @data["moves"][move]
             move_from_file ? valid = true : valid = false

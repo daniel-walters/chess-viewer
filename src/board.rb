@@ -9,10 +9,12 @@ class Board
         setup_board
     end
 
+    #reset array to new blank squares
     def clear_board
         @board = Array.new(8) {Array.new(8) {Square.new}}
     end
 
+    #setup pieces where they would be on a chess board at starting position
     def setup_board
         @board[0][0].piece = Piece.new(:Rook, :black)
         @board[0][1].piece = Piece.new(:Knight, :black)
@@ -38,6 +40,8 @@ class Board
         end
     end
 
+    #for col use ascii character to decimal conversion to map a-h to 0-7
+    #for row flip coord because 1 is bottom left of chess board but top left of array
     def convert_coord_to_index(coord)
         col = ((coord[0].ord - 49).chr).to_i
         row = 7 - (coord[1].to_i - 1)
@@ -45,6 +49,7 @@ class Board
         {:row => row, :col => col}
     end
 
+    #run a different function depending on the type of move
     def move_piece(move_info)
         from_ind = convert_coord_to_index(move_info[:from])
         to_ind = convert_coord_to_index(move_info[:to])
@@ -64,6 +69,7 @@ class Board
         end 
     end
 
+    #for a standard move or capture
     def move_or_capture(from_ind, to_ind)
         #grab piece to be moved
         piece_to_be_moved = @board[from_ind[:row]][from_ind[:col]].piece
@@ -73,9 +79,12 @@ class Board
         @board[from_ind[:row]][from_ind[:col]].piece = nil
     end
 
+    #for an en passant capture
     def en_passant(from_ind, to_ind)
+        #move the pawn
         move_or_capture(from_ind, to_ind)
         #remove captured piece
+        #targeted square different depending on direction pawn is moving
         if from_ind[:row] > to_ind[:row]
             @board[to_ind[:row] + 1][to_ind[:col]].piece = nil
         else
@@ -83,6 +92,7 @@ class Board
         end
     end
 
+    #for short castling
     def short_castle(row)
         #get king
         piece_to_be_moved = @board[row][4].piece
@@ -97,6 +107,7 @@ class Board
         @board[row][7].piece = nil
     end
 
+    #for long castling
     def long_castle(row)
         #get king
         piece_to_be_moved = @board[row][4].piece
@@ -111,11 +122,14 @@ class Board
         @board[row][0].piece = nil
     end
 
+    #for promotions
     def promote(from_ind, to_ind, promote_to)
+        #move piece
         move_or_capture(from_ind, to_ind)
         target_square = @board[to_ind[:row]][to_ind[:col]]
         piece_color = target_square.piece.color
 
+        #overwrite new location of piece with a new piece of promoted type
         case promote_to
         when "N"
             target_square.piece = Piece.new(:Knight, piece_color)

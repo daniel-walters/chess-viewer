@@ -10,6 +10,7 @@ class Piece
                     :Queen => "\u265B", 
                     :King => "\u265A"}
 
+    #unicodes not supported on windows by default
     @@windows_pieces = {:Pawn => "P",
                         :Knight => "N",
                         :Bishop => "B",

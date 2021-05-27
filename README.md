@@ -36,7 +36,10 @@ If 'goto' is chosen, the user will be once more prompted, this time for a move t
 ***NOTE:*** When selecting 'goto', moves must be entered in the format of '[turn][player_to_move]'. I.e. To goto whites move on turn 5, the user must input '5w' when prompted to enter a move.
 
 ### <ins>Control Flow Diagram:</ins>  
-![Control Flow Diagram](docs/controlflow.png)
+![Control Flow Diagram](docs/controlflow.png)  
+
+### <ins>Class Diagram</ins>
+![Class Diagram](docs/class_diag.png)
 ### <ins>Implementation Plan:</ins> 
 *View the trello board for this project [here](https://trello.com/b/lk1aeFoo/chess-viewer)*  
 

@@ -9,6 +9,7 @@ class FileReader
         @data = get_data
     end
 
+    #get just the important data the program needs about a move from the larger hash/json
     def self.get_move(move, data)
         begin
         from = data["moves"][move]["move"]["from_square"]
@@ -28,6 +29,7 @@ class FileReader
         
     private
 
+    #converts pgn to json and stores as hash
     def get_data
         json_file = Egd::Builder.new(File.read(@file)).to_json
         data = JSON.parse(json_file)
